@@ -12,7 +12,7 @@
                             .css({
                                 'top':'0',
                                 'left':'0',
-                                'right':'0', 
+                                'right':'0',
                                 'bottom':'0',
                                 'z-index':'900',
                                 'position':'fixed',
@@ -25,7 +25,7 @@
                         $('#overlay').show();
                     }
                     // only add 'Close' button on first click
-                    if(form.find('.closemodal').length === 0) { 
+                    if(form.find('.closemodal').length === 0) {
                         $('<a href="#" title="Close" class="closemodal">Close</a>').prependTo(form);
                     }
                     form.appendTo('body').centre().show();
@@ -38,7 +38,7 @@
                 }
 
                 $(document).keyup(function(e) {
-                    if (e.keyCode == 27) { 
+                    if (e.keyCode === 27) {
                         hideModal();
                     }
                 });
@@ -56,13 +56,13 @@
                 window.console.log("Modal: Either element to display doesn't exist or there is more than one on the page (use id instead of class!)");
             }
         }
-    }
+    };
     
     $.fn.centre = function() {
         this.css({'position':'absolute', 'z-index':'999'});
         this.css("top", (($(window).height() - this.outerHeight()) / 2) + $(window).scrollTop() + "px");
         this.css("left", (($(window).width() - this.outerWidth()) / 2) + $(window).scrollLeft() + "px");
         return this;
-    }
+    };
     
 }(jQuery));
