@@ -1,5 +1,18 @@
 (function($) {
-    $.fn.modal = function(form) {
+    $.fn.modal = function(form, options) {
+
+        var defaults = {
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 900,
+            position: 'fixed',
+            bgColour: '#000'
+        };
+
+        var o = $.extend(defaults, options);
+
         var form = $(form);
         if(form.length === 1) {
             return this.each(function() {
@@ -10,13 +23,13 @@
                         // fadeTo allows opacity to work
                         $('<div id="overlay" />').appendTo('body')
                             .css({
-                                'top':'0',
-                                'left':'0',
-                                'right':'0',
-                                'bottom':'0',
-                                'z-index':'900',
-                                'position':'fixed',
-                                'background-color':'#000'
+                                'top': o.top,
+                                'left': o.left,
+                                'right': o.right,
+                                'bottom': o.bottom,
+                                'z-index': o.zIndex,
+                                'position': o.position,
+                                'background-color': o.bgColour
                             })
                             .fadeTo('fast', 0.5);
                         
@@ -53,7 +66,7 @@
             });
         } else {
             if(window.console&&window.console.log) {
-                window.console.log("Modal: Either element to display doesn't exist or there is more than one on the page (use id instead of class!)");
+                window.console.log("Modal: Either element to display doesn't exist or there is more than one! (use an id instead of class)");
             }
         }
     };
